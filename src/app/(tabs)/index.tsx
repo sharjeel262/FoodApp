@@ -15,12 +15,12 @@ const TabOneScreen = () => {
         <Stack.Screen 
           name="PizzaBurger" 
           component={PizzaBurger} 
-          options={{ title: 'Menu', headerTitleAlign: 'center' }} // Center the title
+          options={{ title: 'Foodie Moodie', headerTitleAlign: 'center' }} // Center the title
         />
         <Stack.Screen 
           name="NewPage" 
           component={NewPage} 
-          options={{ title: 'Details Page', headerTitleAlign: 'center' }} // Center the title
+          options={{ title: 'Details', headerTitleAlign: 'center' }} // Center the title
         />
       </Stack.Navigator>
     </NavigationContainer>
