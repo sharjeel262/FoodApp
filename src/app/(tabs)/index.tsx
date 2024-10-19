@@ -3,8 +3,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import PizzaBurger from '@/src/components/PizzaBurger';
+import Restaurant from '@/src/components/Restaurant';
 import NewPage from '../../components/NewPage';
 import { RootStackParamList } from '../../types'; // Import your types
+import { StyleSheet } from 'react-native';
+import { red } from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
 
 const Stack = createStackNavigator<RootStackParamList>(); // Use the typed stack
 
@@ -15,7 +18,12 @@ const TabOneScreen = () => {
         <Stack.Screen 
           name="PizzaBurger" 
           component={PizzaBurger} 
-          options={{ title: 'Foodie Moodie', headerTitleAlign: 'center' }} // Center the title
+          options={{ title: 'Foodie Moodie', headerTitleAlign: 'center', }} // Center the title
+        />
+        <Stack.Screen 
+          name="Restaurant" 
+          component={Restaurant} 
+          options={{ title: 'Foodie Moodie', headerTitleAlign: 'center', }} // Center the title
         />
         <Stack.Screen 
           name="NewPage" 
@@ -26,5 +34,6 @@ const TabOneScreen = () => {
     </NavigationContainer>
   );
 };
+
 
 export default TabOneScreen;
