@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, TextInput, ScrollView } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, TextInput, ScrollView, SafeAreaView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -54,6 +54,7 @@ export default function HomePage() {
 
   return (
     <ScrollView style={styles.container}>
+      <SafeAreaView style={{marginTop:28}}>
       <View style={styles.topBar}>
         <Ionicons name="menu" size={30} color="black" />
         <Text style={styles.topBarText}>Home</Text>
@@ -75,6 +76,7 @@ export default function HomePage() {
         data={categories}
         renderItem={renderCategoryItem}
         keyExtractor={(item) => item.id}
+        scrollEnabled={false}
         horizontal
         showsHorizontalScrollIndicator={false}
         style={styles.categoryList}
@@ -85,21 +87,23 @@ export default function HomePage() {
       <FlatList
       data={cuisine}
       renderItem={rendercuisine}
+      // scrollEnabled={false}
       keyExtractor={(item) => item.id}
       horizontal
       showsHorizontalScrollIndicator={false}
       //ListHeaderComponent={<Text style={styles.sectionTitle}>Cuisine</Text>}
       style={styles.cuisineList}
       />
-      
 
       <FlatList
         data={restaurants}
+        scrollEnabled={false}
         renderItem={renderRestaurantItem}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={<Text style={styles.sectionTitle}>Your Restaurants</Text>}
         style={styles.restaurantList}
       />
+      </SafeAreaView>
     </ScrollView>
   );
 }
