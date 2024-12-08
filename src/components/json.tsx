@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, FlatList, Text, TouchableOpacity, TextInput, Linking } from 'react-native';
+import { StyleSheet, View, FlatList, Text, TouchableOpacity, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import restaurantData from '../../assets/restaurants.json';
 
@@ -44,16 +44,13 @@ const HomeScreen = () => {
     <TouchableOpacity style={styles.card} onPress={() => handleRestaurantPress(item)}>
       <Text style={styles.name}>{item.name}</Text>
       <Text style={styles.details}>
-        📍
-        <Text style={styles.link}>{item.address}</Text>
+        📍 <Text style={styles.link}>{item.address}</Text>
       </Text>
       <Text style={styles.details}>
-        📞
-        <Text style={styles.link}>{item.phone_number}</Text>
+        📞 <Text style={styles.link}>{item.phone_number}</Text>
       </Text>
       <Text style={styles.details}>
-        🌐
-        <Text style={styles.link}>{item.website}</Text>
+        🌐 <Text style={styles.link}>{item.website}</Text>
       </Text>
     </TouchableOpacity>
   );
@@ -87,22 +84,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#FFF8E1',
+    backgroundColor: '#FFF3E0', // Light cream for a warm background
   },
   header: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 16,
-    color: '#D4A200',
+    color: '#FF8400', // Orange color for header text
     textAlign: 'center',
   },
   searchBar: {
-    backgroundColor: '#FFEB3B',
+    backgroundColor: '#FFE0B2', // Light orange for search bar
     padding: 10,
     borderRadius: 8,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#D4A200',
+    borderColor: '#FF8400', // Orange border
     fontSize: 16,
     shadowColor: '#000',
     shadowOpacity: 0.1,
@@ -110,7 +107,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   card: {
-    backgroundColor: '#FFF9C4',
+    backgroundColor: '#FFCC80', // Light orange-yellow for card background
     padding: 16,
     marginBottom: 16,
     borderRadius: 12,
@@ -119,21 +116,21 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 5,
     borderWidth: 1,
-    borderColor: '#D4A200',
+    borderColor: '#FF8400', // Orange border
   },
   name: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#6A4F28',
+    color: '#D85A00', // Darker orange for name
     marginBottom: 8,
   },
   details: {
     fontSize: 14,
-    color: '#6A4F28',
+    color: '#D85A00', // Darker orange for details
     marginTop: 4,
   },
   link: {
-    color: '#D4A200',
+    color: '#FF8400', // Orange for links
     textDecorationLine: 'underline',
   },
   noResults: {

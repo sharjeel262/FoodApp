@@ -61,17 +61,17 @@ export default function HomePage() {
       <SafeAreaView style={{ marginTop: 28 }}>
         {/* Button to navigate to JSON Page */}
         <View style={styles.topBar}>
-          <Ionicons name="menu" size={30} color="#6A4F28" />
+          <Ionicons name="menu" size={30} color="#fff" />
           <Text style={styles.topBarText}>Home</Text>
           <View style={styles.topBarIcons}>
-            <Ionicons name="heart-outline" size={24} color="#6A4F28" />
-            <Ionicons name="cart-outline" size={24} color="#6A4F28" style={styles.cartIcon} />
+            <Ionicons name="heart-outline" size={24} color="#fff" />
+            <Ionicons name="cart-outline" size={24} color="#fff" style={styles.cartIcon} />
           </View>
         </View>
 
         <Text style={styles.greeting}>Good Evening, Sharjeel</Text>
         <Text style={styles.restaurantCount}>What's for dinner? There are 567 restaurants in your area</Text>
-        <Button title="All Restaurants" onPress={handleNavigateToJsonPage} color="#D4A200" />
+        <Button title="All Restaurants" onPress={handleNavigateToJsonPage} color="#FFB74D" />
 
         <View style={styles.searchBar}>
           <Ionicons name="search-outline" size={24} color="#6A4F28" />
@@ -118,23 +118,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 4,
-    backgroundColor: '#FFF8E1', // Soft yellow background
+    backgroundColor: '#FFF3E0', // Light cream color for background
   },
   topBar: {
-    backgroundColor: '#D4A200', // Darker yellow/golden for top bar
+    backgroundColor: '#FF8400', // Main color for the top bar
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: -31,
     marginBottom: 16,
     height: 60,
-    borderRadius: 3,
+    borderRadius: 8,
     paddingHorizontal: 12,
   },
   topBarText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#6A4F28', // Dark brown for text contrast
+    color: '#FFF', // White text for contrast
   },
   topBarIcons: {
     flexDirection: 'row',
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   greeting: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#6A4F28', // Dark brown for text
+    color: '#D84315', // Darker orange-red for text contrast
   },
   restaurantCount: {
     color: 'gray',
@@ -154,18 +154,18 @@ const styles = StyleSheet.create({
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFEB3B', // Bright yellow for search bar
+    backgroundColor: '#FFB74D', // Light orange-yellow for search bar
     borderRadius: 8,
     padding: 8,
     marginTop: 10,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#D4A200', // Border color matching top bar
+    borderColor: '#FF8400', // Match the top bar for border color
   },
   searchInput: {
     marginLeft: 8,
     flex: 1,
-    color: '#6A4F28', // Text color for input
+    color: '#6A4F28', // Dark green for input text
   },
   categoryList: {
     marginBottom: 16,
@@ -178,19 +178,16 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 40,
-    marginBottom: 0,
+    marginBottom: 5,
   },
   categoryText: {
-    marginTop: 0,
-    marginBottom: 0,
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#6A4F28', // Dark brown for text
+    color: '#FF8400', // Main color for category titles
   },
   cuisineList: {},
   cuisineItem: {
     alignItems: 'center',
-    alignContent: 'center',
     marginRight: 16,
   },
   cuisineImage: {
@@ -200,46 +197,40 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   cuisineText: {
-    marginTop: 0,
-    marginBottom: 10,
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#6A4F28', // Dark brown for text
+    color: '#FF8400', // Main color for cuisine titles
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 20,
     marginBottom: 8,
-    color: '#6A4F28', // Dark brown for section titles
+    color: '#FF8400', // Main color for section titles
   },
   restaurantList: {},
   restaurantItem: {
     flexDirection: 'column',
     marginBottom: 16,
-    backgroundColor: '#FFF9C4', // Light yellow for card background
+    backgroundColor: '#FFE0B2', // Light orange for restaurant cards
     borderRadius: 8,
     padding: 8,
   },
   restaurantImage: {
     flex: 1,
-    width: 400,
+    width: '100%',
     height: 140,
-    resizeMode: 'stretch',
+    resizeMode: 'cover',
     borderRadius: 10,
-    marginLeft: 0,
-    marginTop: 5,
-    marginRight: 30,
     marginBottom: 10,
   },
   restaurantInfo: {
     flex: 1,
-    padding: 2,
   },
   restaurantName: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#6A4F28', // Dark brown for text
+    color: '#FF8400', // Main color for restaurant names
   },
   deliveryTime: {
     color: 'gray',

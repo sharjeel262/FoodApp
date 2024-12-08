@@ -34,19 +34,19 @@ const SplashScreens: React.FC<SplashProps> = ({ navigation }) => {
       id: "1",
       title: "Find Food You Love",
       description: "Indulge in exquisite flavors and savor every bite!",
-      image: require("../components/assets/images/fast.jpg"),
+      image: require("../components/assets/images/feastlogo1.png"),
     },
     {
       id: "2",
       title: "Fast Delivery",
       description: "Get your food delivered hot and fresh at your doorstep!",
-      image: require("../components/assets/images/fast.jpg"),
+      image: require("../components/assets/images/screen3.png"),
     },
     {
       id: "3",
       title: "Welcome to QuickBite",
       description: "Elevate your dining experience with QuickBite.",
-      image: require("../components/assets/images/fast.jpg"),
+      image: require("../components/assets/images/fast-removebg-preview.png"),
     },
   ];
 
@@ -94,13 +94,16 @@ const SplashScreens: React.FC<SplashProps> = ({ navigation }) => {
       <Animated.Image
         source={item.image}
         style={[styles.image, { opacity: fadeAnim }]}
+        resizeMode="contain"
       />
-      <Animated.Text style={[styles.title, { opacity: fadeAnim }]}>
-        {item.title}
-      </Animated.Text>
-      <Animated.Text style={[styles.description, { opacity: fadeAnim }]}>
-        {item.description}
-      </Animated.Text>
+      <View style={styles.textContainer}>
+        <Animated.Text style={[styles.title, { opacity: fadeAnim }]}>
+          {item.title}
+        </Animated.Text>
+        <Animated.Text style={[styles.description, { opacity: fadeAnim }]}>
+          {item.description}
+        </Animated.Text>
+      </View>
     </View>
   );
 
@@ -131,41 +134,43 @@ const SplashScreens: React.FC<SplashProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#121212",
+    backgroundColor: "#ff8400",
     justifyContent: "center",
     alignItems: "center",
+    overflow: "hidden", // Prevent the content from overflowing
   },
   slide: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
     padding: 20,
   },
   image: {
-    width: 500,
-    height: 600,
-    resizeMode: "contain",
-    marginTop: -200,
-    marginLeft: -80,
-    marginBottom: -100,
+    width: "100%",
+    height: 300, // Adjust the size as needed
+    marginRight: 15,
+    marginBottom: 20,
+  },
+  textContainer: {
+    alignItems: "center", // Center the text components
+    width: "100%",
   },
   title: {
     fontSize: 26,
     fontWeight: "bold",
-    color: "#ffb300",
+    color: "#b8341a",
     textAlign: "center",
-    marginLeft: -80,
+    marginRight: 15,
 
     marginBottom: 10,
   },
   description: {
     fontSize: 16,
-    color: "#ffffff",
+    color: "black",
     textAlign: "center",
+    
     paddingHorizontal: 20,
-    marginLeft: -80,
-
-    marginTop: 10,
   },
   footer: {
     flexDirection: "row",
@@ -178,13 +183,21 @@ const styles = StyleSheet.create({
   },
   skipButton: {
     padding: 10,
+    backgroundColor: "#b8341a",
+    borderRadius: 25,
+    elevation: 5,
+    shadowColor: "#ff5722",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 5,
   },
   skipText: {
     color: "#ffffff",
     fontSize: 16,
+    fontWeight: "bold",
   },
   nextButton: {
-    backgroundColor: "#ff5722",
+    backgroundColor: "#b8341a",
     padding: 12,
     borderRadius: 25,
     elevation: 5,
