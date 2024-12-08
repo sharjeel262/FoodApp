@@ -5,7 +5,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import PizzaBurger from "@/src/components/PizzaBurger";
 import Restaurant from "@/src/components/Restaurant";
 import NewPage from "../../components/NewPage";
+import RestaurantDetail from "../../components/RestaurantDetailScreen"; // Import your RestaurantDetail component
 import SplashScreens from "../../components/SplashScreens"; // Import SplashScreens
+import JsonPage from "../../components/json"; // Import your JsonPage component
 import { RootStackParamList } from "../../types"; // Import your types
 
 const Stack = createStackNavigator<RootStackParamList>(); // Use the typed stack
@@ -55,9 +57,19 @@ const TabOneScreen = () => {
           }}
         />
         <Stack.Screen
+          name="RestaurantDetail" // Add the new RestaurantDetail screen
+          component={RestaurantDetail}
+          options={{ title: "Restaurant Details", headerTitleAlign: "center" }}
+        />
+        <Stack.Screen
           name="NewPage"
           component={NewPage}
           options={{ title: "Details", headerTitleAlign: "center" }}
+        />
+        <Stack.Screen
+          name="JsonPage" // Add this new screen
+          component={JsonPage}
+          options={{ title: "Restaurant's Data", headerTitleAlign: "center" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

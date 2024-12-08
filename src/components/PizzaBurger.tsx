@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, TextInput, ScrollView, SafeAreaView } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet, TextInput, ScrollView, SafeAreaView, Button } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -20,11 +20,14 @@ const restaurants = [
   { id: '1', name: 'Cheezious', image: require('./assets/images/cheezious.jpeg'), deliveryTime: '30 min' },
   { id: '2', name: 'Savour Foods', image: require('./assets/images/svvv.webp'), deliveryTime: '30 min' },
   { id: '3', name: 'Subway - Lahore', image: require('./assets/images/sub.png'), deliveryTime: '30 min' },
-  //{ id: '4', name: 'Savour Foods', image: require('./assets/images/svvv.webp'), deliveryTime: '30 min'}
 ];
 
 export default function HomePage() {
   const navigation = useNavigation();
+
+  const handleNavigateToJsonPage = () => {
+    navigation.navigate('JsonPage'); // Navigate to JsonPage
+  };
 
   const renderCategoryItem = ({ item }) => (
     <View style={styles.categoryItem}>
@@ -32,7 +35,8 @@ export default function HomePage() {
       <Text style={styles.categoryText}>{item.title}</Text>
     </View>
   );
-  const rendercuisine = ({ item }) => (
+
+  const renderCuisineItem = ({ item }) => (
     <View style={styles.cuisineItem}>
       <Image source={item.image} style={styles.cuisineImage} />
       <Text style={styles.cuisineText}>{item.title}</Text>
@@ -54,55 +58,57 @@ export default function HomePage() {
 
   return (
     <ScrollView style={styles.container}>
-      <SafeAreaView style={{marginTop:28}}>
-      <View style={styles.topBar}>
-        <Ionicons name="menu" size={30} color="black" />
-        <Text style={styles.topBarText}>Home</Text>
-        <View style={styles.topBarIcons}>
-          <Ionicons name="heart-outline" size={24} color="black" />
-          <Ionicons name="cart-outline" size={24} color="black" style={styles.cartIcon} />
+      <SafeAreaView style={{ marginTop: 28 }}>
+        {/* Button to navigate to JSON Page */}
+        <View style={styles.topBar}>
+          <Ionicons name="menu" size={30} color="#6A4F28" />
+          <Text style={styles.topBarText}>Home</Text>
+          <View style={styles.topBarIcons}>
+            <Ionicons name="heart-outline" size={24} color="#6A4F28" />
+            <Ionicons name="cart-outline" size={24} color="#6A4F28" style={styles.cartIcon} />
+          </View>
         </View>
-      </View>
 
-      <Text style={styles.greeting}>Good Evening, Sharjeel</Text>
-      <Text style={styles.restaurantCount}>What's for dinner? There are 567 restaurants in your area</Text>
+        <Text style={styles.greeting}>Good Evening, Sharjeel</Text>
+        <Text style={styles.restaurantCount}>What's for dinner? There are 567 restaurants in your area</Text>
+        <Button title="All Restaurants" onPress={handleNavigateToJsonPage} color="#D4A200" />
 
-      <View style={styles.searchBar}>
-        <Ionicons name="search-outline" size={24} color="gray" />
-        <TextInput placeholder="Search for shops & restaurants" style={styles.searchInput} />
-      </View>
+        <View style={styles.searchBar}>
+          <Ionicons name="search-outline" size={24} color="#6A4F28" />
+          <TextInput placeholder="Search for shops & restaurants" style={styles.searchInput} />
+        </View>
 
-      <FlatList
-        data={categories}
-        renderItem={renderCategoryItem}
-        keyExtractor={(item) => item.id}
-        scrollEnabled={false}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.categoryList}
-      />
-      <Text style={styles.sectionTitle}>
-        Cuisne
-      </Text>
-      <FlatList
-      data={cuisine}
-      renderItem={rendercuisine}
-      // scrollEnabled={false}
-      keyExtractor={(item) => item.id}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      //ListHeaderComponent={<Text style={styles.sectionTitle}>Cuisine</Text>}
-      style={styles.cuisineList}
-      />
+        {/* Category List */}
+        <FlatList
+          data={categories}
+          renderItem={renderCategoryItem}
+          keyExtractor={(item) => item.id}
+          scrollEnabled={false}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.categoryList}
+        />
 
-      <FlatList
-        data={restaurants}
-        scrollEnabled={false}
-        renderItem={renderRestaurantItem}
-        keyExtractor={(item) => item.id}
-        ListHeaderComponent={<Text style={styles.sectionTitle}>Your Restaurants</Text>}
-        style={styles.restaurantList}
-      />
+        {/* Cuisine List */}
+        <Text style={styles.sectionTitle}>Cuisine</Text>
+        <FlatList
+          data={cuisine}
+          renderItem={renderCuisineItem}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.cuisineList}
+        />
+
+        {/* Restaurant List */}
+        <FlatList
+          data={restaurants}
+          scrollEnabled={false}
+          renderItem={renderRestaurantItem}
+          keyExtractor={(item) => item.id}
+          ListHeaderComponent={<Text style={styles.sectionTitle}>Your Restaurants</Text>}
+          style={styles.restaurantList}
+        />
       </SafeAreaView>
     </ScrollView>
   );
@@ -112,20 +118,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 4,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF8E1', // Soft yellow background
   },
   topBar: {
-    backgroundColor:'#fae932',
+    backgroundColor: '#D4A200', // Darker yellow/golden for top bar
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginTop: -31,
     marginBottom: 16,
-    height:60,
-    borderRadius:3,
+    height: 60,
+    borderRadius: 3,
+    paddingHorizontal: 12,
   },
   topBarText: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#6A4F28', // Dark brown for text contrast
   },
   topBarIcons: {
     flexDirection: 'row',
@@ -136,6 +145,7 @@ const styles = StyleSheet.create({
   greeting: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: '#6A4F28', // Dark brown for text
   },
   restaurantCount: {
     color: 'gray',
@@ -144,14 +154,18 @@ const styles = StyleSheet.create({
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#e8e8e8',
+    backgroundColor: '#FFEB3B', // Bright yellow for search bar
     borderRadius: 8,
     padding: 8,
+    marginTop: 10,
     marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#D4A200', // Border color matching top bar
   },
   searchInput: {
     marginLeft: 8,
     flex: 1,
+    color: '#6A4F28', // Text color for input
   },
   categoryList: {
     marginBottom: 16,
@@ -171,11 +185,9 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     fontSize: 14,
     fontWeight: 'bold',
+    color: '#6A4F28', // Dark brown for text
   },
-  cuisineList:{
-    //marginBottom:16,
-
-  },
+  cuisineList: {},
   cuisineItem: {
     alignItems: 'center',
     alignContent: 'center',
@@ -192,32 +204,33 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 14,
     fontWeight: 'bold',
+    color: '#6A4F28', // Dark brown for text
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 20,
     marginBottom: 8,
+    color: '#6A4F28', // Dark brown for section titles
   },
   restaurantList: {},
   restaurantItem: {
     flexDirection: 'column',
-    //alignItems: 'left',
     marginBottom: 16,
-    backgroundColor: '#e6e6e6',
+    backgroundColor: '#FFF9C4', // Light yellow for card background
     borderRadius: 8,
     padding: 8,
   },
   restaurantImage: {
-    flex:1,
+    flex: 1,
     width: 400,
     height: 140,
     resizeMode: 'stretch',
     borderRadius: 10,
-    marginLeft:0,
+    marginLeft: 0,
     marginTop: 5,
     marginRight: 30,
-    marginBottom:10,
+    marginBottom: 10,
   },
   restaurantInfo: {
     flex: 1,
@@ -226,6 +239,7 @@ const styles = StyleSheet.create({
   restaurantName: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#6A4F28', // Dark brown for text
   },
   deliveryTime: {
     color: 'gray',
